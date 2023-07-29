@@ -48,7 +48,7 @@ namespace Customers.Controllers
         [Route("Eliminar/{id:int}")]
         public async Task<IActionResult> DeleteCustomerAsync(int id)
         {
-            Customer customer = _context.Customers.Find(id)!;
+            Customer customer = _context.Customers.FirstOrDefault(c => c.Codigo == id)!;
 
             _context.Customers.Remove(customer);
             await _context.SaveChangesAsync();

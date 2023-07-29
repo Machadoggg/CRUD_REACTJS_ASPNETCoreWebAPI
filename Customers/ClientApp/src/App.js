@@ -66,6 +66,27 @@ const App = () => {
     }
 
 
+
+    const eliminarCustomer = async (codigo) => {
+
+        var respuesta = window.confirm("Desea eliminar este cliente?")
+
+        if (!respuesta) {
+            return;
+        }
+
+        const response = await fetch("api/customer/Eliminar/" + codigo, {
+            method: 'DELETE',
+        })
+           
+
+        if (response.ok) {
+            mostrarClientes();
+        }
+    }
+
+
+
     return (
         <Container>
             <Row className="mt-5">
@@ -86,6 +107,8 @@ const App = () => {
                                 setEditar={setEditar}
                                 mostrarModal={mostrarModal}
                                 setMostrarModal={setMostrarModal}
+
+                                eliminarCustomer={eliminarCustomer}
                             />
                         </CardBody>
                     </Card>
