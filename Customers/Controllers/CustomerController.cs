@@ -34,7 +34,7 @@ namespace Customers.Controllers
         [Route("Lista")]
         public async Task<IActionResult> GetAllCustomersAsync()
         {
-            List<Customer> customersList = await _context.Customers.OrderByDescending(c => c.Nombres).ToListAsync();
+            List<Customer> customersList = await _context.Customers.OrderBy(c => c.Nombres).ToListAsync();
             return StatusCode(StatusCodes.Status200OK, customersList);
         }
 
