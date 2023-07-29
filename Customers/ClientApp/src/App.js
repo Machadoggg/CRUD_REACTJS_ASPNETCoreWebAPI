@@ -2,12 +2,14 @@
 /*import { Button } from "bootstrap"*/
 import { useEffect, useState } from "react"
 import { Container, Row, Col, Card, CardHeader, CardBody, Button } from "reactstrap"
+import ModalCustomer from "./componentes/ModalCustomer"
 import TablaCustomer from "./componentes/TablaCustomer"
 
 const App = () => {
 
 
     const [customers, setCustomers] = useState([])
+    const [mostrarModal, setMostrarModal] = useState(false)
 
     const mostrarClientes = async () => {
 
@@ -28,6 +30,23 @@ const App = () => {
         mostrarClientes()
     }, [])
 
+    const guardarCustomer = async (customer) => {
+
+        const response = await fetch("api/customer/Guardar", {
+            method: 'POST',
+            headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(customer)
+        })
+
+        if (response.ok) {
+            setMostrarModal(!mostrarModal);
+            mostrarClientes();
+        }
+    }
+
+
     return (
         <Container>
             <Row className="mt-5">
@@ -38,7 +57,10 @@ const App = () => {
                             <h5>Lista de Clientes</h5>
                         </CardHeader>
                         <CardBody>
-                            <Button size="sm" color="success">Nuevo Cliente</Button>
+                            <Button size="sm" color="success"
+                                onClick={() => setMostrarModal(!mostrarModal)}
+                            >Nuevo Cliente
+                            </Button>
                             <hr></hr>
                             <TablaCustomer data={customers} />
                         </CardBody>
@@ -46,6 +68,13 @@ const App = () => {
                 </Col>
 
             </Row>
+
+            <ModalCustomer
+                mostrarModal={mostrarModal}
+                setMostrarModal={setMostrarModal}
+                guardarCustomer={guardarCustomer}
+            />
+
         </Container>
     )
 
