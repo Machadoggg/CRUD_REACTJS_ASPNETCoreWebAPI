@@ -55,6 +55,8 @@ const ModalCustomer = ({ mostrarModal, setMostrarModal, guardarCustomer, editar,
         {
             editarCustomer(customer)        
         }
+
+        setCustomer(modeloCustomer)
     }
 
 
