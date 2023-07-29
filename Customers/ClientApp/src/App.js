@@ -1,5 +1,4 @@
 
-/*import { Button } from "bootstrap"*/
 import { useEffect, useState } from "react"
 import { Container, Row, Col, Card, CardHeader, CardBody, Button } from "reactstrap"
 import ModalCustomer from "./componentes/ModalCustomer"
