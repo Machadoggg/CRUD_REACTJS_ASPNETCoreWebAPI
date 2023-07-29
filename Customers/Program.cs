@@ -1,8 +1,12 @@
+using Customers.Models;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<CustomerReactContext>();
 
 var app = builder.Build();
 
