@@ -9,6 +9,7 @@ const App = () => {
 
     const [customers, setCustomers] = useState([])
     const [mostrarModal, setMostrarModal] = useState(false)
+    const [editar, setEditar] = useState(null)
 
     const mostrarClientes = async () => {
 
@@ -29,12 +30,31 @@ const App = () => {
         mostrarClientes()
     }, [])
 
+
+
     const guardarCustomer = async (customer) => {
 
         const response = await fetch("api/customer/Guardar", {
             method: 'POST',
             headers: {
                     'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(customer)
+        })
+
+        if (response.ok) {
+            setMostrarModal(!mostrarModal);
+            mostrarClientes();
+        }
+    }
+
+
+    const editarCustomer = async (customer) => {
+
+        const response = await fetch("api/customer/Editar", {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
             },
             body: JSON.stringify(customer)
         })
@@ -61,7 +81,12 @@ const App = () => {
                             >Nuevo Cliente
                             </Button>
                             <hr></hr>
-                            <TablaCustomer data={customers} />
+                            <TablaCustomer
+                                data={customers}
+                                setEditar={setEditar}
+                                mostrarModal={mostrarModal}
+                                setMostrarModal={setMostrarModal}
+                            />
                         </CardBody>
                     </Card>
                 </Col>
@@ -72,6 +97,10 @@ const App = () => {
                 mostrarModal={mostrarModal}
                 setMostrarModal={setMostrarModal}
                 guardarCustomer={guardarCustomer}
+
+                editar={editar}
+                setEditar={setEditar}
+                editarCustomer={editarCustomer}
             />
 
         </Container>

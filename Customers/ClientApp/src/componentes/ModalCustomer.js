@@ -1,5 +1,5 @@
 ﻿
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Modal, Form, FormGroup, Input, Label, ModalBody, ModalFooter, ModalHeader, Button } from "reactstrap"
 
 /*Modelo de inicio para formulario*/
@@ -17,7 +17,7 @@ const modeloCustomer = {
     emails: ""
 }
 
-const ModalCustomer = ({mostrarModal,setMostrarModal,guardarCustomer}) => {
+const ModalCustomer = ({ mostrarModal, setMostrarModal, guardarCustomer, editar, setEditar, editarCustomer}) => {
 
     /*control de este modelo*/
     /*(useState) para controlar el estado de este modelo*/ 
@@ -51,7 +51,30 @@ const ModalCustomer = ({mostrarModal,setMostrarModal,guardarCustomer}) => {
         if (customer.codigo === 0) {
             guardarCustomer(customer)
         }
+        else
+        {
+            editarCustomer(customer)        
+        }
     }
+
+
+    useEffect(() => {
+        if (editar != null) {
+            setCustomer(editar)
+        }
+        else
+        {
+            setCustomer(modeloCustomer)
+        }
+    }, [editar])
+
+
+
+    const cerrarModal = () => {
+        setMostrarModal(!mostrarModal)
+        setEditar(null)
+    }
+
 
 
     return (
@@ -59,7 +82,7 @@ const ModalCustomer = ({mostrarModal,setMostrarModal,guardarCustomer}) => {
         <Modal isOpen={mostrarModal}>
 
             <ModalHeader>
-                Nuevo Contacto
+                {customer.codigo === 0 ? "Nuevo Contacto" : "Editar Contacto"}
             </ModalHeader>
 
             <ModalBody>
@@ -109,7 +132,7 @@ const ModalCustomer = ({mostrarModal,setMostrarModal,guardarCustomer}) => {
 
             <ModalFooter>
                 <Button color="primary" size="sm" onClick={enviarDatos}>Guardar</Button>
-                <Button color="danger" size="sm" onClick={() => setMostrarModal(!mostrarModal)}>Cerrar</Button>
+                <Button color="danger" size="sm" onClick={cerrarModal}>Cerrar</Button>
             </ModalFooter>
 
         </Modal>
