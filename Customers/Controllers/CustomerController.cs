@@ -24,14 +24,6 @@ namespace Customers.Controllers
             return StatusCode(StatusCodes.Status200OK, customersList);
         }
 
-        [HttpGet]
-        [Route("ListaGeneros")]
-        public async Task<IActionResult> GetAllGendersAsync()
-        {
-            List<Genero> GenderList = await _context.Generos.OrderBy(c => c.Nombre).ToListAsync();
-            return StatusCode(StatusCodes.Status200OK, GenderList);
-        }
-
         [HttpPost]
         [Route("Guardar")]
         public async Task<IActionResult> PostCustomerAsync([FromBody] Customer request)
@@ -62,6 +54,24 @@ namespace Customers.Controllers
             await _context.SaveChangesAsync();
 
             return StatusCode(StatusCodes.Status200OK, "ok");
+        }
+
+
+
+        [HttpGet]
+        [Route("ListaGeneros")]
+        public async Task<IActionResult> GetAllGendersAsync()
+        {
+            List<Genero> GenderList = await _context.Generos.OrderBy(c => c.Nombre).ToListAsync();
+            return StatusCode(StatusCodes.Status200OK, GenderList);
+        }
+
+        [HttpGet]
+        [Route("ListaTipoDocumento")]
+        public async Task<IActionResult> GetAllDocumentAsync()
+        {
+            List<TipoDocumento> TipoDocumentoList = await _context.TipoDocumentos.OrderBy(c => c.Nombre).ToListAsync();
+            return StatusCode(StatusCodes.Status200OK, TipoDocumentoList);
         }
 
     }

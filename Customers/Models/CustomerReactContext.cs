@@ -19,6 +19,8 @@ public partial class CustomerReactContext : DbContext
 
     public virtual DbSet<Genero> Generos { get; set; }
 
+    public virtual DbSet<TipoDocumento> TipoDocumentos { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Server=DESKTOP-LVJNNNI\\SQLEXPRESS; DataBase=CustomerReact;Integrated Security=true;Encrypt=False");
@@ -45,6 +47,19 @@ public partial class CustomerReactContext : DbContext
         {
             entity.Property(e => e.Nombre)
                 .HasMaxLength(20)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<TipoDocumento>(entity =>
+        {
+            entity.ToTable("TipoDocumento");
+
+            entity.Property(e => e.Codigo)
+                .HasMaxLength(2)
+                .IsUnicode(false)
+                .HasColumnName("codigo");
+            entity.Property(e => e.Nombre)
+                .HasMaxLength(50)
                 .IsUnicode(false);
         });
 

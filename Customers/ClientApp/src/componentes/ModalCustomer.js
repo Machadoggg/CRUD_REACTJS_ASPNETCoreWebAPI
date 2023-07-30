@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react"
 import { Modal, Form, FormGroup, Input, Label, ModalBody, ModalFooter, ModalHeader, Button } from "reactstrap"
 import SexoDropdown from "./SexoDropdown"
+import TipoDocumentoDropdown from "./TipoDocumentoDropdown"
 
 /*Modelo de inicio para formulario*/
 const modeloCustomer = {
@@ -90,10 +91,15 @@ const ModalCustomer = ({ mostrarModal, setMostrarModal, guardarCustomer, editar,
 
             <ModalBody>
                 <Form>
+                    {/*<FormGroup>*/}
+                    {/*    <Label>Tipo Documento</Label>*/}
+                    {/*    <Input name="tipoDocumento" onChange={(e) => actualizarDato(e)} value={customer.tipoDocumento} />*/}
+                    {/*</FormGroup>*/}
+
                     <FormGroup>
-                        <Label>Tipo Documento</Label>
-                        <Input name="tipoDocumento" onChange={(e) => actualizarDato(e)} value={customer.tipoDocumento} />
+                        <TipoDocumentoDropdown value={customer.tipoDocumento} onChange={(value) => setCustomer({ ...customer, tipoDocumento: value })} />
                     </FormGroup>
+
                     <FormGroup>
                         <Label>Número Documento</Label>
                         <Input name="numeroDocumento" onChange={(e) => actualizarDato(e)} value={customer.numeroDocumento} />
