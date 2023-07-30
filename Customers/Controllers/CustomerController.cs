@@ -24,6 +24,14 @@ namespace Customers.Controllers
             return StatusCode(StatusCodes.Status200OK, customersList);
         }
 
+        [HttpGet]
+        [Route("ListaGeneros")]
+        public async Task<IActionResult> GetAllGendersAsync()
+        {
+            List<Genero> GenderList = await _context.Generos.OrderBy(c => c.Nombre).ToListAsync();
+            return StatusCode(StatusCodes.Status200OK, GenderList);
+        }
+
         [HttpPost]
         [Route("Guardar")]
         public async Task<IActionResult> PostCustomerAsync([FromBody] Customer request)

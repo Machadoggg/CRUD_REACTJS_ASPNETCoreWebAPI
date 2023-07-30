@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace Customers.Models;
 
 public partial class Customer
 {
-    [Key]
     public long Codigo { get; set; }
 
     public string TipoDocumento { get; set; } = null!;

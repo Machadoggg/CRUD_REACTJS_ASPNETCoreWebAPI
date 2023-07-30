@@ -1,6 +1,7 @@
 ﻿
 import { useEffect, useState } from "react"
 import { Modal, Form, FormGroup, Input, Label, ModalBody, ModalFooter, ModalHeader, Button } from "reactstrap"
+import SexoDropdown from "./SexoDropdown"
 
 /*Modelo de inicio para formulario*/
 const modeloCustomer = {
@@ -30,6 +31,7 @@ const ModalCustomer = ({ mostrarModal, setMostrarModal, guardarCustomer, editar,
     const actualizarDato = (e) => {
 
         console.log(e.target.name + " : " + e.target.value)
+
         /*Actualizar Modelo*/
         setCustomer(
             {
@@ -38,7 +40,6 @@ const ModalCustomer = ({ mostrarModal, setMostrarModal, guardarCustomer, editar,
                 /*Actualizar solo la propiedad que vamos a indicarle*/
                 /*la propiedad que esta modificando va a actualizar ese valor que esta escribiendo*/ 
                 [e.target.name]: e.target.value
-
             }
         )
     }
@@ -110,8 +111,7 @@ const ModalCustomer = ({ mostrarModal, setMostrarModal, guardarCustomer, editar,
                         <Input name="apellido2" onChange={(e) => actualizarDato(e)} value={customer.apellido2} />
                     </FormGroup>
                     <FormGroup>
-                        <Label>Género</Label>
-                        <Input name="genero" onChange={(e) => actualizarDato(e)} value={customer.genero} />
+                        <SexoDropdown value={customer.genero} onChange={(value) => setCustomer({ ...customer, genero: value })} />
                     </FormGroup>
                     <FormGroup>
                         <Label>Fecha Nacimiento</Label>

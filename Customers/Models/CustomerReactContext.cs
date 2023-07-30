@@ -17,6 +17,8 @@ public partial class CustomerReactContext : DbContext
 
     public virtual DbSet<Customer> Customers { get; set; }
 
+    public virtual DbSet<Genero> Generos { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Server=DESKTOP-LVJNNNI\\SQLEXPRESS; DataBase=CustomerReact;Integrated Security=true;Encrypt=False");
@@ -37,6 +39,13 @@ public partial class CustomerReactContext : DbContext
             entity.Property(e => e.Emails).HasMaxLength(100);
             entity.Property(e => e.Nombres).HasMaxLength(30);
             entity.Property(e => e.Telefonos).HasMaxLength(100);
+        });
+
+        modelBuilder.Entity<Genero>(entity =>
+        {
+            entity.Property(e => e.Nombre)
+                .HasMaxLength(20)
+                .IsUnicode(false);
         });
 
         OnModelCreatingPartial(modelBuilder);
