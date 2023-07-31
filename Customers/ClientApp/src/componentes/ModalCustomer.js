@@ -91,45 +91,83 @@ const ModalCustomer = ({ mostrarModal, setMostrarModal, guardarCustomer, editar,
 
             <ModalBody>
                 <Form>
-                    <FormGroup>
-                        <TipoDocumentoDropdown value={customer.tipoDocumento} onChange={(value) => setCustomer({ ...customer, tipoDocumento: value })} />
-                    </FormGroup>
 
-                    <FormGroup>
-                        <Label>Número Documento</Label>
-                        <Input name="numeroDocumento" onChange={(e) => actualizarDato(e)} value={customer.numeroDocumento} />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label>Nombres</Label>
-                        <Input name="nombres" onChange={(e) => actualizarDato(e)} value={customer.nombres} />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label>Primer Apellido</Label>
-                        <Input name="apellido1" onChange={(e) => actualizarDato(e)} value={customer.apellido1} />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label>Segundo Apellido</Label>
-                        <Input name="apellido2" onChange={(e) => actualizarDato(e)} value={customer.apellido2} />
-                    </FormGroup>
-                    <FormGroup>
-                        <SexoDropdown value={customer.genero} onChange={(value) => setCustomer({ ...customer, genero: value })} />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label>Fecha Nacimiento</Label>
-                        <Input name="fechaNacimiento" onChange={(e) => actualizarDato(e)} value={customer.fechaNacimiento} />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label>Direcciones</Label>
-                        <Input name="direcciones" onChange={(e) => actualizarDato(e)} value={customer.direcciones} />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label>Teléfonos</Label>
-                        <Input name="telefonos" onChange={(e) => actualizarDato(e)} value={customer.telefonos} />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label>Emails</Label>
-                        <Input name="emails" onChange={(e) => actualizarDato(e)} value={customer.emails} />
-                    </FormGroup>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm">
+                                <FormGroup>
+                                    <TipoDocumentoDropdown value={customer.tipoDocumento} onChange={(value) => setCustomer({ ...customer, tipoDocumento: value })} />
+                                </FormGroup>
+                            </div>
+                            <div class="col-sm">
+                                <FormGroup>
+                                    <Label>Número Documento</Label>
+                                    <Input name="numeroDocumento" onChange={(e) => actualizarDato(e)} value={customer.numeroDocumento} />
+                                </FormGroup>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm">
+                                <FormGroup>
+                                    <Label>Nombres</Label>
+                                    <Input name="nombres" onChange={(e) => actualizarDato(e)} value={customer.nombres} />
+                                </FormGroup>
+                            </div>
+                            <div class="col-sm">
+                                <FormGroup>
+                                    <Label>Primer Apellido</Label>
+                                    <Input name="apellido1" onChange={(e) => actualizarDato(e)} value={customer.apellido1} />
+                                </FormGroup>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm">
+                                <FormGroup>
+                                    <Label>Segundo Apellido</Label>
+                                    <Input name="apellido2" onChange={(e) => actualizarDato(e)} value={customer.apellido2} />
+                                </FormGroup>
+                            </div>
+                            <div class="col-sm">
+                                <FormGroup>
+                                    <SexoDropdown value={customer.genero} onChange={(value) => setCustomer({ ...customer, genero: value })} />
+                                </FormGroup>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm">
+                                <FormGroup>
+                                    <Label>Fecha Nacimiento</Label>
+                                    <Input name="fechaNacimiento" onChange={(e) => actualizarDato(e)} value={customer.fechaNacimiento} />
+                                </FormGroup>
+                            </div>
+                            <div class="col-sm">
+                                <FormGroup>
+                                    <Label>Direcciones</Label>
+                                    <Input name="direcciones" onChange={(e) => actualizarDato(e)} value={customer.direcciones} />
+                                </FormGroup>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm">
+                                <FormGroup>
+                                    <Label>Teléfonos</Label>
+                                    <Input name="telefonos" onChange={(e) => actualizarDato(e)} value={customer.telefonos} />
+                                </FormGroup>
+                            </div>
+                            <div class="col-sm">
+                                <FormGroup>
+                                    <Label>Emails</Label>
+                                    <Input name="emails" onChange={(e) => actualizarDato(e)} value={customer.emails} />
+                                </FormGroup>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </Form>
             </ModalBody>
 
