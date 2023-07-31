@@ -86,16 +86,11 @@ const ModalCustomer = ({ mostrarModal, setMostrarModal, guardarCustomer, editar,
         <Modal isOpen={mostrarModal}>
 
             <ModalHeader>
-                {customer.codigo === 0 ? "Nuevo Contacto" : "Editar Contacto"}
+                {customer.codigo === 0 ? "Nuevo Cliente" : "Editar Cliente"}
             </ModalHeader>
 
             <ModalBody>
                 <Form>
-                    {/*<FormGroup>*/}
-                    {/*    <Label>Tipo Documento</Label>*/}
-                    {/*    <Input name="tipoDocumento" onChange={(e) => actualizarDato(e)} value={customer.tipoDocumento} />*/}
-                    {/*</FormGroup>*/}
-
                     <FormGroup>
                         <TipoDocumentoDropdown value={customer.tipoDocumento} onChange={(value) => setCustomer({ ...customer, tipoDocumento: value })} />
                     </FormGroup>

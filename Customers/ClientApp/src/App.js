@@ -89,19 +89,26 @@ const App = () => {
 
     return (
         <Container>
-            <Row className="mt-5">
+            <Container className="d-flex justify-content-center mt-3 mb-3">
+                <img src="images/reactLogo.png" alt="React Logo" height="100px" />
+            </Container>
+            <Row className="mt-3">
 
                 <Col sm="12">
                     <Card>
                         <CardHeader>
-                            <h5>Lista de Clientes</h5>
+                            <div className="d-flex justify-content-between">
+                                <h3 className="d-flex justify-content-start">CRUD</h3>
+
+                                <Container className="d-flex justify-content-end">
+                                    <Button size="sm" color="success"
+                                        onClick={() => setMostrarModal(!mostrarModal)}
+                                    >Crear Cliente
+                                    </Button>
+                                </Container>
+                            </div>
                         </CardHeader>
                         <CardBody>
-                            <Button size="sm" color="success"
-                                onClick={() => setMostrarModal(!mostrarModal)}
-                            >Nuevo Cliente
-                            </Button>
-                            <hr></hr>
                             <TablaCustomer
                                 data={customers}
                                 setEditar={setEditar}
